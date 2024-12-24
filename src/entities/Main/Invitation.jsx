@@ -40,7 +40,7 @@ export default function Invitation() {
                 여러분과 함께 나눌 수 있다면
             </StyledText>
 
-            <StyledText color="#5F4C4C" fontSize="10px" lignHeight="28px" letterSpacing="0.4px"  marginBottom="24px">
+            <StyledText color="#5F4C4C" fontSize="10px" lignHeight="28px" letterSpacing="0.4px"  marginBottom="32px">
                 그 길은 더욱 빛날 것입니다.
             </StyledText>
 
@@ -71,6 +71,6 @@ const Line = styled.div`
 width: ${({ width }) => width || '326px'};
 height: ${({ height }) => height || '0.5px'};
 background-color : #755D5D;
-margin-bottom : ${({ marginBottom }) => marginBottom || '0px'};
+margin-bottom : ${({ marginBottom }) => marginBottom || '32px'};
 `
 
