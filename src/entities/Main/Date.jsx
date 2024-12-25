@@ -95,6 +95,9 @@ const WrapCalendar = styled.div`
 width : 100%;
 height: 293px;
 background-color :#ECE8D7;
+margin-bottom : 63px;
+padding : 0px 20px 0px 20px;
+box-sizing : border-box;
 `
 const CalendarContainer = styled.div`
 width: 362px;
@@ -102,7 +105,7 @@ height: 249px;
 margin: 20px auto;
 border-radius: 22px;
 background-color: #fff;
-padding: 28px 54px 28px 54px;
+padding: 28px 50px 28px 50px;
 box-sizing : border-box;
 `;
 

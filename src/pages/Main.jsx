@@ -4,6 +4,7 @@ import MainSection from '../entities/Main/MainSection'
 import Invitation from '../entities/Main/Invitation'
 import Gallery from '../entities/Main/Gallery'
 import Date from '../entities/Main/Date'
+import ContactWeddingHost from '../entities/Main/ContactWeddingHost'
 
 export default function Main() {
   return (
@@ -19,6 +20,7 @@ export default function Main() {
 
             <Date/>
 
+            <ContactWeddingHost/>
           </C.PageSpace>
       </C.Center>
     </C.Page>
