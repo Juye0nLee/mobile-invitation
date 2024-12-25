@@ -7,11 +7,11 @@ import MESSAGE from '../../assets/message.svg'
 export default function ContactWeddingHost() {
     const onClickMessageButton = (name) => {
         switch(name){
-            case "이시우" : window.location.href = 'sms:+821024229779?body=결혼 축하해!'; break;
-            case "김은경" : window.location.href = 'sms:+821024229779?body=결혼 축하해!'; break;
-            case "김석환" : window.location.href = 'sms:+821024229779?body=결혼 축하해!'; break;
-            case "송은주" : window.location.href = 'sms:+821024229779?body=결혼 축하해!'; break;
-            case "이상민" : window.location.href = 'sms:+821024229779?body=결혼 축하해!'; break;
+            case "이시우" : window.location.href = 'sms:+821092261208?body=결혼 축하해!'; break;
+            case "김은경" : window.location.href = 'sms:+821071482852?body=결혼 축하해!'; break;
+            case "김석환" : window.location.href = 'sms:+821022979779?body=결혼 축하해!'; break;
+            case "송효주" : window.location.href = 'sms:+821098442552?body=결혼 축하해!'; break;
+            case "이상민" : window.location.href = 'sms:+821082851874?body=결혼 축하해!'; break;
             case "김민주" : window.location.href = 'sms:+821024229779?body=결혼 축하해!'; break;
             default : break;
         }
@@ -19,11 +19,11 @@ export default function ContactWeddingHost() {
 
     const onClikcCallButton = (name) => {
         switch(name){
-            case "이시우" : window.location.href = 'tel:+821024229779'; break;
-            case "김은경" : window.location.href = 'tel:+821024229779'; break;
-            case "김석환" : window.location.href = 'tel:+821024229779'; break;
-            case "송은주" : window.location.href = 'tel:+821024229779'; break;
-            case "이상민" : window.location.href = 'tel:+821024229779'; break;
+            case "이시우" : window.location.href = 'tel:+821092261208'; break;
+            case "김은경" : window.location.href = 'tel:+821071482852'; break;
+            case "김석환" : window.location.href = 'tel:+821022979779'; break;
+            case "송효주" : window.location.href = 'tel:+821098442552'; break;
+            case "이상민" : window.location.href = 'tel:+821082851874'; break;
             case "김민주" : window.location.href = 'tel:+821024229779'; break;
             default : break;
         }
@@ -88,14 +88,14 @@ export default function ContactWeddingHost() {
                     </IconContainer>
 
                     <StyledText color="#574545" fontSize="12px" marginBottom="12px">
-                        어머니 송은주
+                        어머니 송효주
                     </StyledText>
                     <IconContainer marginBottom="10px">
                         <WrapIcon backgroundColor="#FFC3C3" marginRight="5px">
-                            <Icon src={CALL} onClick={()=>onClikcCallButton("송은주")}/>
+                            <Icon src={CALL} onClick={()=>onClikcCallButton("송효주")}/>
                         </WrapIcon>
                         <WrapIcon backgroundColor="#FFC3C3">
-                            <Icon src={MESSAGE} onClick={()=>onClickMessageButton("송은주")} />
+                            <Icon src={MESSAGE} onClick={()=>onClickMessageButton("송효주")} />
                         </WrapIcon>
                     </IconContainer>
 

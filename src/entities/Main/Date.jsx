@@ -64,7 +64,6 @@ export default function Date() {
     );
 }
 
-// 스타일 컴포넌트
 const MainLayout = styled.div`
   display: flex;
   flex-direction: column;
@@ -96,7 +95,7 @@ width : 100%;
 height: 293px;
 background-color :#ECE8D7;
 margin-bottom : 63px;
-padding : 0px 20px 0px 20px;
+padding : 0px 16px 0px 16px;
 box-sizing : border-box;
 `
 const CalendarContainer = styled.div`
@@ -105,7 +104,7 @@ height: 249px;
 margin: 20px auto;
 border-radius: 22px;
 background-color: #fff;
-padding: 28px 50px 28px 50px;
+padding: 28px 44px 28px 44px;
 box-sizing : border-box;
 `;
 
