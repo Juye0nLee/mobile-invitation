@@ -48,10 +48,10 @@ export default function ContactWeddingHost() {
                     </StyledText>
                     <IconContainer marginBottom="10px">
                         <WrapIcon marginRight="5px">
-                            <Icon src={CALL} onClick={onClikcCallButton("이시우")} />
+                            <Icon src={CALL} onClick={()=>onClikcCallButton("이시우")} />
                         </WrapIcon>
                         <WrapIcon >
-                            <Icon src={MESSAGE} onClick={onClickMessageButton("이시우")} />
+                            <Icon src={MESSAGE} onClick={()=>onClickMessageButton("이시우")} />
                         </WrapIcon>
                     </IconContainer>
 
@@ -61,10 +61,10 @@ export default function ContactWeddingHost() {
                     </StyledText>
                     <IconContainer marginBottom="10px">
                         <WrapIcon marginRight="5px">
-                            <Icon src={CALL} onClick={onClikcCallButton("김은경")} />
+                            <Icon src={CALL} onClick={()=>onClikcCallButton("김은경")} />
                         </WrapIcon>
                         <WrapIcon >
-                            <Icon src={MESSAGE} onClick={onClickMessageButton("김은경")}/>
+                            <Icon src={MESSAGE} onClick={()=>onClickMessageButton("김은경")}/>
                         </WrapIcon>
                     </IconContainer>
 
@@ -80,10 +80,10 @@ export default function ContactWeddingHost() {
                     </StyledText>
                     <IconContainer marginBottom="10px">
                         <WrapIcon backgroundColor="#FFC3C3" marginRight="5px">
-                            <Icon src={CALL} onClick={onClikcCallButton("김석환")}/>
+                            <Icon src={CALL} onClick={()=>onClikcCallButton("김석환")}/>
                         </WrapIcon>
                         <WrapIcon backgroundColor="#FFC3C3">
-                            <Icon src={MESSAGE} onClick={onClickMessageButton("김석환")} />
+                            <Icon src={MESSAGE} onClick={()=>onClickMessageButton("김석환")} />
                         </WrapIcon>
                     </IconContainer>
 
@@ -92,26 +92,26 @@ export default function ContactWeddingHost() {
                     </StyledText>
                     <IconContainer marginBottom="10px">
                         <WrapIcon backgroundColor="#FFC3C3" marginRight="5px">
-                            <Icon src={CALL} onClick={onClikcCallButton("송은주")}/>
+                            <Icon src={CALL} onClick={()=>onClikcCallButton("송은주")}/>
                         </WrapIcon>
                         <WrapIcon backgroundColor="#FFC3C3">
-                            <Icon src={MESSAGE} onClick={onClickMessageButton("송은주")} />
+                            <Icon src={MESSAGE} onClick={()=>onClickMessageButton("송은주")} />
                         </WrapIcon>
                     </IconContainer>
 
                 </WeddingHost>
             </WeddingHostContainer>
 
-            <>
+            <GroomAndBride>
 
                 <Contact>
                     신랑에게 연락하기
                     <IconContainer marginLeft="10px">
                         <WrapIcon marginRight="5px">
-                            <Icon src={CALL} onClick={onClikcCallButton("이상민")}/>
+                            <Icon src={CALL} onClick={()=>onClikcCallButton("이상민")}/>
                         </WrapIcon>
                         <WrapIcon>
-                            <Icon src={MESSAGE} onClick={onClickMessageButton("이상민")}/>
+                            <Icon src={MESSAGE} onClick={()=>onClickMessageButton("이상민")}/>
                         </WrapIcon>
                     </IconContainer>
                 </Contact>
@@ -120,15 +120,15 @@ export default function ContactWeddingHost() {
                     신부에게 연락하기
                     <IconContainer  marginLeft="10px">
                         <WrapIcon backgroundColor="#FFC3C3" marginRight="5px">
-                            <Icon src={CALL} onClick={onClikcCallButton("김민주")}/>
+                            <Icon src={CALL} onClick={()=>onClikcCallButton("김민주")}/>
                         </WrapIcon>
                         <WrapIcon backgroundColor="#FFC3C3">
-                            <Icon src={MESSAGE} onClick={onClickMessageButton("김민주")}/>
+                            <Icon src={MESSAGE} onClick={()=>onClickMessageButton("김민주")}/>
                         </WrapIcon>
                     </IconContainer>
                 </Contact>
 
-            </>
+            </GroomAndBride>
 
         </MainLayout>
     )
@@ -190,6 +190,10 @@ margin-right: ${({ marginRight }) => marginRight || "0px"};
 const Icon = styled.img`
 width : 16px;
 height : 16px;
+`
+
+const GroomAndBride = styled.div`
+margin-bottom : 63px;
 `
 const Contact = styled.div`
 color: #574545;
