@@ -51,7 +51,7 @@ export default function Gallery() {
     );
 }
 
-// 스타일 컴포넌트
+
 const MainLayout = styled.div`
   display: flex;
   flex-direction: column;
@@ -89,9 +89,9 @@ const Thumbnail = styled.img`
 const LargeImage = styled.img`
   width: auto;
   height: auto;
-  max-width: 90vw; /* 화면의 90% 너비 */
-  max-height: 90vh; /* 화면의 90% 높이 */
-  object-fit: contain; /* 이미지가 비율을 유지하며 모달 크기에 맞게 조정됨 */
+  max-width: 90vw; 
+  max-height: 90vh; 
+  object-fit: contain; 
 `;
 
 const StyledModal = styled(Modal)``
