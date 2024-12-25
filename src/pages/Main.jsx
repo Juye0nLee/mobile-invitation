@@ -3,6 +3,8 @@ import * as C from '../shared/styles/ CommonStyle'
 import MainSection from '../entities/Main/MainSection'
 import Invitation from '../entities/Main/Invitation'
 import Gallery from '../entities/Main/Gallery'
+import Date from '../entities/Main/Date'
+
 export default function Main() {
   return (
     <C.Page>
@@ -14,6 +16,8 @@ export default function Main() {
             <Invitation/>
 
             <Gallery/>
+
+            <Date/>
 
           </C.PageSpace>
       </C.Center>
