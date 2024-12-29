@@ -13,7 +13,7 @@ export const Center = styled.div`
 
 export const PageSpace = styled.div`
   width: 100vw;
-  height : 600vh;
+  height : 5000px;
   min-height: 100dvh;
   background-color : #FDFCF5;
   display : flex;

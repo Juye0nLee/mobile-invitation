@@ -6,6 +6,7 @@ import Gallery from '../entities/Main/Gallery'
 import Date from '../entities/Main/Date'
 import ContactWeddingHost from '../entities/Main/ContactWeddingHost'
 import Map from '../entities/Main/Map'
+import SendHeart from '../entities/Main/SendHeart'
 
 export default function Main() {
   return (
@@ -24,6 +25,8 @@ export default function Main() {
             <ContactWeddingHost/>
 
             <Map/>
+
+            <SendHeart/>
             
           </C.PageSpace>
       </C.Center>

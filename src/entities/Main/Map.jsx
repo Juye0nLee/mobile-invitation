@@ -78,25 +78,25 @@ export default function Map() {
       <MapSection ref={mapRef} />
 
       <NavSection>
-        <StyledText fontFamily="GangwonEdu_OTFBoldA" color="#755D5D" fontSize="8px" letterSpacing="1.28px" marginBottom="9px">네비게이션</StyledText>
+        <StyledText fontFamily="GangwonEdu_OTFBoldA" color="#755D5D" fontSize="9px" letterSpacing="1.28px" marginBottom="9px">네비게이션</StyledText>
 
         <StyledText  color="#755D5D" fontSize="7px"marginBottom="9px">원하는 앱을 선택하시면 길안내가 시작됩니다.</StyledText>
 
         <ButtonSection>
-          <NaverMapButton onClick={handleDirectionClick}>
+          <MapButton onClick={handleDirectionClick}>
             <NaverMapImg src={NAVERMAP_ICON} />
-            <StyledText>네이버지도</StyledText>
-          </NaverMapButton>
+            <StyledText fontSize="10px" color="#755D5D">네이버지도</StyledText>
+          </MapButton>
 
-          <NaverMapButton onClick={openKakaoNavi}>
+          <MapButton onClick={openKakaoNavi}>
             <NaverMapImg src={KAKAOMAP_ICON} />
-            <StyledText>카카오맵</StyledText>
-          </NaverMapButton>
+            <StyledText fontSize="10px" color="#755D5D">카카오맵</StyledText>
+          </MapButton>
 
-          <NaverMapButton onClick={openTMap}>
+          <MapButton onClick={openTMap}>
             <NaverMapImg src={TMAP_ICON} />
-            <StyledText>T맵</StyledText>
-          </NaverMapButton>
+            <StyledText fontSize="10px" color="#755D5D">T맵</StyledText>
+          </MapButton>
         </ButtonSection>
 
       </NavSection>
@@ -225,20 +225,21 @@ const BusSection = styled.div``;
 const ButtonSection = styled.div`
 display : flex;
 `
-const NaverMapButton = styled.div`
+const MapButton = styled.div`
 border : 1px solid #ddd;
 background-color : #fff;
 border-radius : 5px;
-width : 80px;
+width : 160px;
 height : 28px;
 display : flex;
-justify-content : space-evenly;
+justify-content : center;
 align-items: center;
 margin-right : 10px;
 `
 const NaverMapImg = styled.img`
 width : 16px;
 height : 16px;
+margin-right : 8px;
 `
 
 const NavSection = styled.div`

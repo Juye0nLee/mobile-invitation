@@ -4,7 +4,7 @@ export default function Invitation() {
     return (
         <MainLayout>
 
-            <StyledText fontSize="10px" letterSpacing="11.4px" marginTop="60px" marginBottom="32px">INVITATION</StyledText>
+            <StyledText fontFamily="JejuMyeongjo"fontSize="10px" letterSpacing="11.4px" marginTop="60px" marginBottom="32px">INVITATION</StyledText>
 
             <Line marginBottom="32px"/>
 

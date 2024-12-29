@@ -51,11 +51,11 @@ export default function MainSection() {
       <Line/>
 
       <StyledText fontSize="10px" color="#5F4C4C" marginBottom="16px" lignHeight="13px">
-        이시우 ∙ 김은경 의 아들 상민
+        이시우 ∙ 김은경 <Role>의 아들</Role> 상민
       </StyledText>
 
       <StyledText fontSize="10px" color="#5F4C4C" marginBottom="58px" lignHeight="13px">
-        김석환 ∙ 송효주 의 딸 민주
+        김석환 ∙ 송효주 <Role>의 딸</Role> 민주
       </StyledText>
 
       <MiniBanner>
@@ -108,4 +108,14 @@ display : flex;
 justify-content : center;
 align-items : center;
 margin-bottom: 0;
+`
+
+const Role = styled.span`
+color: #5F4C4C;
+font-family: GangwonEdu_OTFLightA;
+font-size: 8px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-right : 4px;
 `
