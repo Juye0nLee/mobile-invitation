@@ -24,6 +24,7 @@ export default function Main() {
             <ContactWeddingHost/>
 
             <Map/>
+            
           </C.PageSpace>
       </C.Center>
     </C.Page>
