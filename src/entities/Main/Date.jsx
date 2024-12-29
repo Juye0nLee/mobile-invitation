@@ -29,7 +29,7 @@ export default function Date() {
                 <CalendarContainer>
                     <CalendarHeader>
                         2025 2월 
-                        <StyledText marginLeft="4px">
+                        <StyledText fontFamily="GangwonEdu_OTFLightA"marginLeft="4px">
                             오후12:30
                         </StyledText>
                     </CalendarHeader>
@@ -73,7 +73,7 @@ const MainLayout = styled.div`
 
 const StyledText = styled.span`
   color: ${({ color }) => color || "#000"};
-  font-family: JejuMyeongjo;
+  font-family: ${({ fontFamily}) => fontFamily || "JejuMyeongjo"};
   font-size: ${({ fontSize }) => fontSize || "8px"};
   font-style: normal;
   font-weight: ${({ fontWeight }) => fontWeight || "400"};
@@ -111,7 +111,7 @@ box-sizing : border-box;
 const CalendarHeader = styled.div`
 border-bottom: 1px solid #000;
 color: #000;
-font-family: SeoulNamsan;
+font-family: GangwonEdu_OTFLightA;
 font-size: 12px;
 font-style: normal;
 font-weight: 400;
@@ -139,7 +139,7 @@ width: 21px;
 height: 21px;
 color: #000;
 text-align: center;
-font-family: Inter;
+font-family: GangwonEdu_OTFLightA;
 font-size: 12px;
 font-style: normal;
 font-weight: 400;

@@ -57,7 +57,7 @@ const MainLayout = styled.div`
 `
 const StyledText = styled.div`
   color: ${({ color }) => color || '#755D5D'};
-  font-family: JejuMyeongjo;
+  font-family: ${({ fontFamily}) => fontFamily || "GangwonEdu_OTFLightA"};
   font-size: ${({ fontSize }) => fontSize || '24px'};
   font-style: normal;
   font-weight: ${({ fontWeight }) => fontWeight || '400'};

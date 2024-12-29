@@ -69,7 +69,7 @@ export default function Map() {
 
   return (
     <MainLayout>
-      <StyledText fontSize="10px" letterSpacing="11.4px" marginBottom="32px">
+      <StyledText fontFamily="JejuMyeongjo" fontSize="10px" letterSpacing="11.4px" marginBottom="32px">
         오시는 길
       </StyledText>
 
@@ -77,27 +77,32 @@ export default function Map() {
 
       <MapSection ref={mapRef} />
 
-      <ButtonSection>
-        <NaverMapButton onClick={handleDirectionClick}>
-          <NaverMapImg src={NAVERMAP_ICON} />
-          <StyledText>네이버지도</StyledText>
-        </NaverMapButton>
+      <NavSection>
+        <StyledText fontFamily="GangwonEdu_OTFBoldA" color="#755D5D" fontSize="8px" letterSpacing="1.28px" marginBottom="9px">네비게이션</StyledText>
 
-        <NaverMapButton onClick={openKakaoNavi}>
-          <NaverMapImg src={KAKAOMAP_ICON} />
-          <StyledText>카카오맵</StyledText>
-        </NaverMapButton>
+        <StyledText  color="#755D5D" fontSize="7px"marginBottom="9px">원하는 앱을 선택하시면 길안내가 시작됩니다.</StyledText>
 
-        <NaverMapButton onClick={openTMap}>
-          <NaverMapImg src={TMAP_ICON} />
-          <StyledText>T맵</StyledText>
-        </NaverMapButton>
-      </ButtonSection>
+        <ButtonSection>
+          <NaverMapButton onClick={handleDirectionClick}>
+            <NaverMapImg src={NAVERMAP_ICON} />
+            <StyledText>네이버지도</StyledText>
+          </NaverMapButton>
 
+          <NaverMapButton onClick={openKakaoNavi}>
+            <NaverMapImg src={KAKAOMAP_ICON} />
+            <StyledText>카카오맵</StyledText>
+          </NaverMapButton>
 
+          <NaverMapButton onClick={openTMap}>
+            <NaverMapImg src={TMAP_ICON} />
+            <StyledText>T맵</StyledText>
+          </NaverMapButton>
+        </ButtonSection>
+
+      </NavSection>
 
       <Transport>
-        <StyledText color="#755D5D" fontSize="8px" letterSpacing="1.28px" marginBottom="9px">
+        <StyledText color="#755D5D" fontSize="8px" letterSpacing="1.28px" marginBottom="9px" fontFamily="GangwonEdu_OTFBoldA">
           지하철 이용 시
         </StyledText>
         <StyledText color="#755D5D" fontSize="7px" letterSpacing="1.28px">
@@ -106,7 +111,7 @@ export default function Map() {
       </Transport>
 
       <Transport>
-        <StyledText color="#755D5D" fontSize="8px" letterSpacing="1.28px" marginBottom="9px">
+        <StyledText color="#755D5D" fontSize="8px" letterSpacing="1.28px" marginBottom="9px" fontFamily="GangwonEdu_OTFBoldA">
           자가용 이용 시
         </StyledText>
         <StyledText color="#755D5D" fontSize="7px" letterSpacing="1.28px">
@@ -115,7 +120,7 @@ export default function Map() {
       </Transport>
 
       <Transport>
-        <StyledText color="#755D5D" fontSize="8px" marginBottom="9px">
+        <StyledText color="#755D5D" fontSize="8px" marginBottom="9px" fontFamily="GangwonEdu_OTFBoldA">
           버스 이용 시
         </StyledText>
         <BusList>
@@ -160,7 +165,7 @@ const MainLayout = styled.div`
 
 const StyledText = styled.span`
   color: ${({ color }) => color || '#000'};
-  font-family: JejuMyeongjo;
+  font-family: ${({ fontFamily }) => fontFamily || "GangwonEdu_OTFLightA"};
   font-size: ${({ fontSize }) => fontSize || '8px'};
   font-style: normal;
   font-weight: ${({ fontWeight }) => fontWeight || '400'};
@@ -205,7 +210,7 @@ const Bus = styled.div`
 
 const BusNumber = styled.div`
   color: #755D5D;
-  font-family: JejuMyeongjo;
+  font-family: GangwonEdu_OTFLightA;
   font-size: 7px;
   font-style: normal;
   font-weight: 400;
@@ -219,8 +224,6 @@ const BusSection = styled.div``;
 
 const ButtonSection = styled.div`
 display : flex;
-margin-bottom : 16px;
-
 `
 const NaverMapButton = styled.div`
 border : 1px solid #ddd;
@@ -236,4 +239,11 @@ margin-right : 10px;
 const NaverMapImg = styled.img`
 width : 16px;
 height : 16px;
+`
+
+const NavSection = styled.div`
+width: 362px;
+display : flex;
+flex-direction : column;
+margin-bottom: 28px;
 `

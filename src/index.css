@@ -4,6 +4,24 @@
   src: url('/src/assets/font/JejuMyeongjo.ttf') format('truetype');
   font-weight: 100;
 }
+@font-face {
+  font-family: 'SANGJUDajungdagam';
+  src: url('/src/assets/font/SANGJUDajungdagam.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'GangwonEdu_OTFBoldA';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GangwonEdu_OTFLightA';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFLightA.woff') format('woff');
+  font-weight: 300; /* Light 버전 */
+  font-style: normal;
+}
+
 
 
 /*Medium*/

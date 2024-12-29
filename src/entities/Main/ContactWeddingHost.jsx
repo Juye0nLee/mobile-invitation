@@ -30,7 +30,7 @@ export default function ContactWeddingHost() {
       };
     return (
         <MainLayout>
-            <StyledText fontSize="10px" letterSpacing="11.4px" marginBottom="32px">
+            <StyledText fontFamily="JejuMyeongjo"fontSize="10px" letterSpacing="11.4px" marginBottom="32px">
                 혼주에게 연락하기
             </StyledText>
 
@@ -40,11 +40,11 @@ export default function ContactWeddingHost() {
 
                 <WeddingHost marginRight="96px">
                     <StyledText color="#769FCA" fontSize="11px" marginBottom="34px">
-                        신랑 측 혼주
+                       신랑 측 혼주
                     </StyledText>
 
                     <StyledText color="#574545" fontSize="12px" marginBottom="12px">
-                        아버지 이시우
+                    <Role>아버지 </Role> 이시우
                     </StyledText>
                     <IconContainer marginBottom="10px">
                         <WrapIcon marginRight="5px">
@@ -57,7 +57,7 @@ export default function ContactWeddingHost() {
 
 
                     <StyledText color="#574545" fontSize="12px" marginBottom="12px">
-                        어머니 김은경
+                        <Role>어머니 </Role> 김은경
                     </StyledText>
                     <IconContainer marginBottom="10px">
                         <WrapIcon marginRight="5px">
@@ -76,7 +76,7 @@ export default function ContactWeddingHost() {
                     </StyledText>
 
                     <StyledText color="#574545" fontSize="12px" marginBottom="12px">
-                        아버지 김석환
+                        <Role>아버지 </Role> 김석환
                     </StyledText>
                     <IconContainer marginBottom="10px">
                         <WrapIcon backgroundColor="#FFC3C3" marginRight="5px">
@@ -88,7 +88,7 @@ export default function ContactWeddingHost() {
                     </IconContainer>
 
                     <StyledText color="#574545" fontSize="12px" marginBottom="12px">
-                        어머니 송효주
+                        <Role>어머니 </Role> 송효주
                     </StyledText>
                     <IconContainer marginBottom="10px">
                         <WrapIcon backgroundColor="#FFC3C3" marginRight="5px">
@@ -143,10 +143,9 @@ const MainLayout = styled.div`
 
 const StyledText = styled.div`
   color: ${({ color }) => color || "#755D5D"};
-  font-family: JejuMyeongjo;
+  font-family: ${({ fontFamily }) => fontFamily || "GangwonEdu_OTFLightA"};
   font-size: ${({ fontSize }) => fontSize || "24px"};
   font-style: normal;
-  font-weight: ${({ fontWeight }) => fontWeight || "400"};
   margin-bottom: ${({ marginBottom }) => marginBottom || "0px"};
   margin-top: ${({ marginTop }) => marginTop || "0px"};
   letter-spacing: ${({ letterSpacing }) => letterSpacing || "0px"};
@@ -197,7 +196,7 @@ margin-bottom : 63px;
 `
 const Contact = styled.div`
 color: #574545;
-font-family: JejuMyeongjo;
+font-family: GangwonEdu_OTFLightA;
 font-size: 11px;
 font-style: normal;
 font-weight: 400;
@@ -206,4 +205,14 @@ display : flex;
 align-items : center;
 justify-content : center;
 margin-bottom : 10px;
+`
+
+const Role = styled.span`
+color: #A1A0A3;
+font-family: GangwonEdu_OTFLightA;
+font-size: 7px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-right : 4px;
 `

@@ -22,17 +22,17 @@ export default function MainSection() {
   return (
     <MainLayout>
       
-      <StyledText fontSize="16px" color="#B09D86" marginBottom="26px" marginTop="98px">
+      <StyledText fontFamily="JejuMyeongjo" fontSize="16px" color="#B09D86" marginBottom="26px" marginTop="98px">
         {daysLeft !== null ? `D-${daysLeft}` : 'Loading...'}
       </StyledText>
 
-      <StyledText color="#B09D86" fontSize="32px" letterSpacing="16px" marginBottom="51px">
+      <StyledText fontFamily="JejuMyeongjo" color="#B09D86" fontSize="32px" letterSpacing="16px" marginBottom="51px">
         2025 0215
       </StyledText>
       
       <MainImage src={MAIN_IMAGE} />
 
-      <StyledText marginBottom="32px" marginTop="50px">
+      <StyledText fontFamily="JejuMyeongjo" marginBottom="32px" marginTop="50px">
         이상민 ∙ 김민주
       </StyledText>
 
@@ -83,7 +83,7 @@ const MainImage = styled.img`
 
 const StyledText = styled.div`
   color: ${({ color }) => color || '#574545'};
-  font-family: JejuMyeongjo;
+  font-family: ${({ fontFamily}) => fontFamily || "GangwonEdu_OTFLightA"};
   font-size: ${({ fontSize }) => fontSize || '24px'};
   font-style: normal;
   font-weight: ${({ fontWeight }) => fontWeight || '400'};
