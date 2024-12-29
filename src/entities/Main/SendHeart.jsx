@@ -23,28 +23,10 @@ export default function SendHeart() {
         switch (type) {
             case "신랑": {
                 return (
-                    <Modal
+                    <StyledModal
                         isOpen={isOpen}
                         onRequestClose={closeModal}
                         shouldCloseOnOverlayClick={true}
-                        style={{
-                            overlay: {
-                                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                            },
-                            content: {
-                                width: '362px',
-                                height: '338px',
-                                padding: '0',
-                                border: 'none',
-                                background: '#fff',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                position: 'relative',
-                                margin: 'auto',
-                            },
-                        }}
                     >
                         <CloseButton onClick={closeModal}>X</CloseButton>
                         <ModalContent>
@@ -74,33 +56,15 @@ export default function SendHeart() {
                             </WrapAccountNumber>
                             <StyledText fontSize="11px" color="#574545" marginBottom="27px">예금주 김은경</StyledText>
                         </ModalContent>
-                    </Modal>
+                    </StyledModal>
                 );
             }
             case "신부": {
                 return (
-                    <Modal
+                    <StyledModal
                         isOpen={isOpen}
                         onRequestClose={closeModal}
                         shouldCloseOnOverlayClick={true}
-                        style={{
-                            overlay: {
-                                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                            },
-                            content: {
-                                width: '362px',
-                                height: '338px',
-                                padding: '0',
-                                border: 'none',
-                                background: '#fff',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                position: 'relative',
-                                margin: 'auto',
-                            },
-                        }}
                     >
                         <CloseButton onClick={closeModal}>X</CloseButton>
                         <ModalContent>
@@ -130,7 +94,7 @@ export default function SendHeart() {
                             </WrapAccountNumber>
                             <StyledText fontSize="11px" color="#574545" marginBottom="27px">예금주 송효주</StyledText>
                         </ModalContent>
-                    </Modal>
+                    </StyledModal>
                 );
             }
             default:
@@ -229,7 +193,26 @@ const CloseButton = styled.button`
   font-size: 16px;
   cursor: pointer;
 `;
+const StyledModal = styled(Modal)`
+  width: 362px;
+  height: 338px;
+  padding: 0;
+  border: none;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto;
+  border-radius: 8px;
 
+  @media (max-width: 480px) {
+    width: 90%;
+    height: auto;
+    padding: 20px;
+  }
+`;
 const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
