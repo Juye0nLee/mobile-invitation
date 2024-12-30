@@ -30,7 +30,7 @@ export default function SendHeart() {
                     >
                         <CloseButton onClick={closeModal}>X</CloseButton>
                         <ModalContent>
-                            <StyledText fontSize="14px" marginBottom="20px" marginTop="18px">
+                            <StyledText fontSize="14px" marginBottom="20px" marginTop="18px" letterSpacing="11.4px">
                                 신랑측 계좌번호
                             </StyledText>
                             <Line marginBottom="30px" />
@@ -68,7 +68,7 @@ export default function SendHeart() {
                     >
                         <CloseButton onClick={closeModal}>X</CloseButton>
                         <ModalContent>
-                            <StyledText fontSize="14px" marginBottom="20px" marginTop="18px">
+                            <StyledText fontSize="14px" marginBottom="20px" marginTop="18px" letterSpacing="11.4px">
                                 신부측 계좌번호
                             </StyledText>
                             <Line marginBottom="30px" />
