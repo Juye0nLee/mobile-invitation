@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Modal from 'react-modal'
+import {db} from '../../firebase'
+import {doc,getDoc} from 'firebase/firestore'
 import CHECK from '../../assets/check.svg'
 
 export default function Attendance() {
@@ -30,6 +32,7 @@ export default function Attendance() {
           </StyledText>
           <Line marginBottom="30px" />
           <StyledText fontSize="11px" color="#574545" marginBottom="16px">참석여부</StyledText>
+          <StyledInput placeholder='이름을 입력해주세요'/>
           <ButtonSection>
             <SelectButton 
               isSelected={selected === '참석'} 
@@ -73,12 +76,12 @@ export default function Attendance() {
   );
 }
 
-// 스타일 컴포넌트
 const MainLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-bottom : 74px;
 `;
 
 const StyledText = styled.span`
@@ -188,3 +191,26 @@ const SendButton = styled.div`
   align-items: center;
   cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
 `;
+
+const StyledInput = styled.input`
+width: ${({ width }) => width || '120px'};
+height: ${({ height }) => height || '24px'};
+flex-shrink: 0;
+border: 1px solid #ddd;
+background: #FFF;
+color: #755D5D;
+font-family: GangwonEdu_OTFLightA;
+font-size: 8px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 1.28px;
+margin-right: ${({ marginRight }) => marginRight || '0px'};
+margin-bottom: 10px;
+&:focus {
+  outline: none;
+}
+&:: placeholder {
+  color : #A09B86;
+}
+`

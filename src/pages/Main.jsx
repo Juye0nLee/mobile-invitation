@@ -11,6 +11,7 @@ import ContactWeddingHost from '../entities/Main/ContactWeddingHost';
 import Map from '../entities/Main/Map';
 import SendHeart from '../entities/Main/SendHeart';
 import Attendance from '../entities/Main/Attendance';
+import GuestBook from '../entities/Main/GuestBook';
 
 export default function Main() {
   useEffect(() => {
@@ -44,6 +45,9 @@ export default function Main() {
           </Wrap>
           <Wrap data-aos="fade-up" data-aos-delay="1400">
             <Attendance/>
+          </Wrap>
+          <Wrap data-aos="fade-up" data-aos-delay="1600">
+            <GuestBook/>
           </Wrap>
         </C.PageSpace>
       </C.Center>
