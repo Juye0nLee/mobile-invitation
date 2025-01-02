@@ -12,6 +12,7 @@ import Map from '../entities/Main/Map';
 import SendHeart from '../entities/Main/SendHeart';
 import Attendance from '../entities/Main/Attendance';
 import GuestBook from '../entities/Main/GuestBook';
+import MusicPlay from '../entities/Main/MusicPlay';
 
 export default function Main() {
   useEffect(() => {
@@ -22,6 +23,7 @@ export default function Main() {
     <C.Page>
       <C.Center>
         <C.PageSpace>
+          <MusicPlay/>
           <Wrap data-aos="fade-up">
             <MainSection />
           </Wrap>
