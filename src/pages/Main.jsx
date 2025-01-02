@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -14,9 +14,14 @@ import Attendance from '../entities/Main/Attendance';
 import GuestBook from '../entities/Main/GuestBook';
 import MusicPlay from '../entities/Main/MusicPlay';
 import Footer from '../entities/Main/Footer';
-
+import Intro from '../entities/Main/Intro';
 export default function Main() {
+  const [isShow, setIsShow] = useState(false);
+
   useEffect(() => {
+    setTimeout(() => {
+      setIsShow(true)
+    }, 3000)
     AOS.init({ duration: 1000 });
   }, []);
 
@@ -24,10 +29,14 @@ export default function Main() {
     <C.Page>
       <C.Center>
         <C.PageSpace>
-          <MusicPlay/>
-          <Wrap data-aos="fade-up">
+          {
+            !isShow && <Intro />
+          }
+
+          < MusicPlay />
+          {/* <Wrap data-aos="fade-up"> */}
             <MainSection />
-          </Wrap>
+          {/* </Wrap> */}
           <Wrap data-aos="fade-up" data-aos-delay="200">
             <Invitation />
           </Wrap>
@@ -47,13 +56,14 @@ export default function Main() {
             <SendHeart />
           </Wrap>
           <Wrap data-aos="fade-up" data-aos-delay="1400">
-            <Attendance/>
+            <Attendance />
           </Wrap>
           <Wrap data-aos="fade-up" data-aos-delay="1600">
-            <GuestBook/>
+            <GuestBook />
           </Wrap>
 
-          <Footer/>
+          <Footer />
+
         </C.PageSpace>
       </C.Center>
     </C.Page>
