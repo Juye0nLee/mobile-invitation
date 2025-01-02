@@ -47,9 +47,9 @@ export default function Gallery() {
         GALLERY
       </StyledText>
 
-      <Line marginBottom="10px" />
+      <Line marginBottom="32px" />
 
-      <StyledText color="#755D5D" fontSize="12px">
+      <StyledText color="#755D5D" fontSize="12px" marginBottom="32px">
         이미지를 클릭하시면 확대보기가 가능합니다.
       </StyledText>
       <ImageContentWrap>
@@ -117,7 +117,6 @@ const ImageContentWrap = styled.div`
   margin-bottom: 20px;
 `;
 const MainImage = styled.img`
-  margin-top: 50px;
   border-radius: 10px;
 `;
 
