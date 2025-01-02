@@ -69,7 +69,7 @@ export default function Map() {
 
   return (
     <MainLayout>
-      <StyledText fontFamily="JejuMyeongjo" fontSize="10px" letterSpacing="11.4px" marginBottom="32px">
+      <StyledText fontFamily="JejuMyeongjo" fontSize="16px" letterSpacing="11.4px" marginBottom="32px">
         오시는 길
       </StyledText>
 
@@ -78,58 +78,58 @@ export default function Map() {
       <MapSection ref={mapRef} />
 
       <NavSection>
-        <StyledText fontFamily="GangwonEdu_OTFBoldA" color="#755D5D" fontSize="9px" letterSpacing="1.28px" marginBottom="9px">네비게이션</StyledText>
+        <StyledText fontFamily="GangwonEdu_OTFBoldA" color="#755D5D" fontSize="16px" letterSpacing="1.28px" marginBottom="4px">네비게이션</StyledText>
 
-        <StyledText  color="#755D5D" fontSize="7px"marginBottom="9px">원하는 앱을 선택하시면 길안내가 시작됩니다.</StyledText>
+        <StyledText  color="#755D5D" fontSize="12px"marginBottom="9px">원하는 앱을 선택하시면 길안내가 시작됩니다.</StyledText>
 
         <ButtonSection>
           <MapButton onClick={handleDirectionClick}>
             <NaverMapImg src={NAVERMAP_ICON} />
-            <StyledText fontSize="10px" color="#755D5D">네이버지도</StyledText>
+            <StyledText fontSize="12px" color="#755D5D">네이버지도</StyledText>
           </MapButton>
 
           <MapButton onClick={openKakaoNavi}>
             <NaverMapImg src={KAKAOMAP_ICON} />
-            <StyledText fontSize="10px" color="#755D5D">카카오맵</StyledText>
+            <StyledText fontSize="12px" color="#755D5D">카카오맵</StyledText>
           </MapButton>
 
           <MapButton onClick={openTMap}>
             <NaverMapImg src={TMAP_ICON} />
-            <StyledText fontSize="10px" color="#755D5D">T맵</StyledText>
+            <StyledText fontSize="12px" color="#755D5D">T맵</StyledText>
           </MapButton>
         </ButtonSection>
 
       </NavSection>
 
       <Transport>
-        <StyledText color="#755D5D" fontSize="8px" letterSpacing="1.28px" marginBottom="9px" fontFamily="GangwonEdu_OTFBoldA">
+        <StyledText color="#755D5D" fontSize="16px" letterSpacing="1.28px" marginBottom="9px" fontFamily="GangwonEdu_OTFBoldA">
           지하철 이용 시
         </StyledText>
-        <StyledText color="#755D5D" fontSize="7px" letterSpacing="1.28px">
+        <StyledText color="#755D5D" fontSize="12px" letterSpacing="1.28px">
           미아사거리역(4호선) 3번 출구 도보 3분거리
         </StyledText>
       </Transport>
 
       <Transport>
-        <StyledText color="#755D5D" fontSize="8px" letterSpacing="1.28px" marginBottom="9px" fontFamily="GangwonEdu_OTFBoldA">
+        <StyledText color="#755D5D" fontSize="16px" letterSpacing="1.28px" marginBottom="9px" fontFamily="GangwonEdu_OTFBoldA">
           자가용 이용 시
         </StyledText>
-        <StyledText color="#755D5D" fontSize="7px" letterSpacing="1.28px">
+        <StyledText color="#755D5D" fontSize="12px" letterSpacing="1.28px">
           더 빅토리아 웨딩 파티, 강북구 송중동 42-8, 서울 강북구 도봉로 16
         </StyledText>
       </Transport>
 
       <Transport>
-        <StyledText color="#755D5D" fontSize="8px" marginBottom="9px" fontFamily="GangwonEdu_OTFBoldA">
+        <StyledText color="#755D5D" fontSize="16px" marginBottom="9px" fontFamily="GangwonEdu_OTFBoldA">
           버스 이용 시
         </StyledText>
         <BusList>
-          <StyledText color="#755D5D" fontSize="7px">
+          <StyledText color="#755D5D" fontSize="12px">
             미아사거리역 정류장 하차
           </StyledText>
           <BusSection>
             <Bus>
-              <StyledText color="#755D5D" fontSize="7px" letterSpacing="1.28px">
+              <StyledText color="#755D5D" fontSize="12px" letterSpacing="1.28px">
                 간선버스(파랑)
               </StyledText>
               <BusNumber>
@@ -138,13 +138,13 @@ export default function Map() {
               </BusNumber>
             </Bus>
             <Bus>
-              <StyledText color="#755D5D" fontSize="7px" letterSpacing="1.28px">
+              <StyledText color="#755D5D" fontSize="12px" letterSpacing="1.28px">
                 지선버스(초록)
               </StyledText>
               <BusNumber>1124 1128 1137 1165</BusNumber>
             </Bus>
             <Bus>
-              <StyledText color="#755D5D" fontSize="7px" letterSpacing="1.28px">
+              <StyledText color="#755D5D" fontSize="12px" letterSpacing="1.28px">
                 마을버스
               </StyledText>
               <BusNumber>강북05 강북06 강북09 강북11 성북10-1 성북10-2</BusNumber>
@@ -161,6 +161,8 @@ const MainLayout = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding : 0 20px 0 20px;
+  box-sizing : border-box;
 `;
 
 const StyledText = styled.span`
@@ -211,10 +213,10 @@ const Bus = styled.div`
 const BusNumber = styled.div`
   color: #755D5D;
   font-family: GangwonEdu_OTFLightA;
-  font-size: 7px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 165%;
+  line-height: 120%;
   letter-spacing: 1.12px;
   width: 117px;
   margin-left: 8px;

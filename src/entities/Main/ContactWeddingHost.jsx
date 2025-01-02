@@ -7,12 +7,12 @@ import MESSAGE from '../../assets/message.svg'
 export default function ContactWeddingHost() {
     const onClickMessageButton = (name) => {
         switch(name){
-            case "이시우" : window.location.href = 'sms:+821092261208?body=결혼 축하해!'; break;
-            case "김은경" : window.location.href = 'sms:+821071482852?body=결혼 축하해!'; break;
-            case "김석환" : window.location.href = 'sms:+821022979779?body=결혼 축하해!'; break;
-            case "송효주" : window.location.href = 'sms:+821098442552?body=결혼 축하해!'; break;
-            case "이상민" : window.location.href = 'sms:+821082851874?body=결혼 축하해!'; break;
-            case "김민주" : window.location.href = 'sms:+821024229779?body=결혼 축하해!'; break;
+            case "이시우" : window.location.href = 'sms:+821092261208'; break;
+            case "김은경" : window.location.href = 'sms:+821071482852'; break;
+            case "김석환" : window.location.href = 'sms:+821022979779'; break;
+            case "송효주" : window.location.href = 'sms:+821098442552'; break;
+            case "이상민" : window.location.href = 'sms:+821082851874'; break;
+            case "김민주" : window.location.href = 'sms:+821024229779'; break;
             default : break;
         }
       };
@@ -30,7 +30,7 @@ export default function ContactWeddingHost() {
       };
     return (
         <MainLayout>
-            <StyledText fontFamily="JejuMyeongjo"fontSize="10px" letterSpacing="11.4px" marginBottom="32px">
+            <StyledText fontFamily="JejuMyeongjo"fontSize="16px" letterSpacing="11.4px" marginBottom="32px">
                 혼주에게 연락하기
             </StyledText>
 
@@ -39,11 +39,11 @@ export default function ContactWeddingHost() {
             <WeddingHostContainer>
 
                 <WeddingHost marginRight="96px">
-                    <StyledText color="#769FCA" fontSize="11px" marginBottom="34px">
+                    <StyledText color="#769FCA" fontSize="16px" marginBottom="34px">
                        신랑 측 혼주
                     </StyledText>
 
-                    <StyledText color="#574545" fontSize="12px" marginBottom="12px">
+                    <StyledText color="#574545" fontSize="16px" marginBottom="12px">
                     <Role>아버지 </Role> 이시우
                     </StyledText>
                     <IconContainer marginBottom="10px">
@@ -56,7 +56,7 @@ export default function ContactWeddingHost() {
                     </IconContainer>
 
 
-                    <StyledText color="#574545" fontSize="12px" marginBottom="12px">
+                    <StyledText color="#574545" fontSize="16px" marginBottom="12px">
                         <Role>어머니 </Role> 김은경
                     </StyledText>
                     <IconContainer marginBottom="10px">
@@ -71,11 +71,11 @@ export default function ContactWeddingHost() {
                 </WeddingHost>
 
                 <WeddingHost>
-                    <StyledText color="#F28B8B" fontSize="11px" marginBottom="34px">
+                    <StyledText color="#F28B8B" fontSize="16px" marginBottom="34px">
                         신부 측 혼주
                     </StyledText>
 
-                    <StyledText color="#574545" fontSize="12px" marginBottom="12px">
+                    <StyledText color="#574545" fontSize="16px" marginBottom="12px">
                         <Role>아버지 </Role> 김석환
                     </StyledText>
                     <IconContainer marginBottom="10px">
@@ -87,7 +87,7 @@ export default function ContactWeddingHost() {
                         </WrapIcon>
                     </IconContainer>
 
-                    <StyledText color="#574545" fontSize="12px" marginBottom="12px">
+                    <StyledText color="#574545" fontSize="16px" marginBottom="12px">
                         <Role>어머니 </Role> 송효주
                     </StyledText>
                     <IconContainer marginBottom="10px">
@@ -175,8 +175,8 @@ margin-bottom: ${({ marginBottom }) => marginBottom || "0px"};
 margin-left: ${({ marginLeft }) => marginLeft || "0px"};
 `
 const WrapIcon = styled.div`
-width: 26px;
-height: 27px;
+width: 32px;
+height: 32px;
 flex-shrink: 0;
 background-color: ${({ backgroundColor }) => backgroundColor || "#C3E0FF"};
 border-radius : 50%;
@@ -187,8 +187,8 @@ margin-right: ${({ marginRight }) => marginRight || "0px"};
 `
 
 const Icon = styled.img`
-width : 16px;
-height : 16px;
+width : 20px;
+height : 20px;
 `
 
 const GroomAndBride = styled.div`
@@ -197,7 +197,7 @@ margin-bottom : 63px;
 const Contact = styled.div`
 color: #574545;
 font-family: GangwonEdu_OTFLightA;
-font-size: 11px;
+font-size: 16px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
@@ -210,7 +210,7 @@ margin-bottom : 10px;
 const Role = styled.span`
 color: #A1A0A3;
 font-family: GangwonEdu_OTFLightA;
-font-size: 7px;
+font-size: 10px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;

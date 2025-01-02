@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
+// import MAIN_DATE from '../../assets/date.svg'
 const MAIN_IMAGE = 'https://jy-study-bucket.s3.ap-northeast-2.amazonaws.com/%E1%84%86%E1%85%A9%E1%84%8E%E1%85%A5%E1%86%BC/main_Image.png';
-
+const MAIN_DATE = "https://jy-study-bucket.s3.ap-northeast-2.amazonaws.com/%E1%84%86%E1%85%A9%E1%84%8E%E1%85%A5%E1%86%BC/date.png";
 export default function MainSection() {
   const [daysLeft, setDaysLeft] = useState(null);
 
@@ -26,9 +26,7 @@ export default function MainSection() {
         {daysLeft !== null ? `D-${daysLeft}` : 'Loading...'}
       </StyledText>
 
-      <StyledText fontFamily="JejuMyeongjo" color="#B09D86" fontSize="32px" letterSpacing="16px" marginBottom="51px">
-        2025 0215
-      </StyledText>
+      <MainDate src={MAIN_DATE}/>
       
       <MainImage src={MAIN_IMAGE} />
 
@@ -36,30 +34,30 @@ export default function MainSection() {
         이상민 ∙ 김민주
       </StyledText>
 
-      <StyledText fontSize="11px" color="#5F4C4C" marginBottom="16px" lignHeight="13px">
+      <StyledText fontSize="16px" color="#5F4C4C" marginBottom="16px" lignHeight="13px">
         2025년 2월 15일 토요일 오후 12시 30분
       </StyledText>
 
-      <StyledText fontSize="11px" color="#5F4C4C" marginBottom="16px" lignHeight="13px">
+      <StyledText fontSize="16px" color="#5F4C4C" marginBottom="16px" lignHeight="13px">
         더 빅토리아 웨딩파티 하늘정원홀
       </StyledText>
 
-      <StyledText fontSize="11px" color="#5F4C4C" marginBottom="44px" lignHeight="13px">
+      <StyledText fontSize="16px" color="#5F4C4C" marginBottom="44px" lignHeight="13px">
         9F Ciel Garden Hall
       </StyledText>
 
       <Line/>
 
-      <StyledText fontSize="10px" color="#5F4C4C" marginBottom="16px" lignHeight="13px">
+      <StyledText fontSize="16px" color="#5F4C4C" marginBottom="16px" lignHeight="13px">
         이시우 ∙ 김은경 <Role>의 아들</Role> 상민
       </StyledText>
 
-      <StyledText fontSize="10px" color="#5F4C4C" marginBottom="58px" lignHeight="13px">
+      <StyledText fontSize="16px" color="#5F4C4C" marginBottom="58px" lignHeight="13px">
         김석환 ∙ 송효주 <Role>의 딸</Role> 민주
       </StyledText>
 
       <MiniBanner>
-        <StyledText color="#fff" fontSize="10px" letterSpacing="6.8px" lignHeight="26px" >소중한 당신을 초대합니다</StyledText>
+        <StyledText color="#fff" fontSize="14px" letterSpacing="6.8px" lignHeight="26px" >소중한 당신을 초대합니다</StyledText>
       </MiniBanner>
 
 
@@ -84,7 +82,7 @@ const MainImage = styled.img`
 const StyledText = styled.div`
   color: ${({ color }) => color || '#574545'};
   font-family: ${({ fontFamily}) => fontFamily || "GangwonEdu_OTFLightA"};
-  font-size: ${({ fontSize }) => fontSize || '24px'};
+  font-size: ${({ fontSize }) => fontSize || '36px'};
   font-style: normal;
   font-weight: ${({ fontWeight }) => fontWeight || '400'};
   margin-bottom: ${({ marginBottom }) => marginBottom || '0px'};
@@ -113,9 +111,15 @@ margin-bottom: 0;
 const Role = styled.span`
 color: #5F4C4C;
 font-family: GangwonEdu_OTFLightA;
-font-size: 8px;
+font-size: 12px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 margin-right : 4px;
+`
+
+const MainDate = styled.img`
+width: 338px;
+height: 32px;
+margin-bottom : 56px;
 `

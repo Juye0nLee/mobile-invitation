@@ -104,25 +104,25 @@ export default function SendHeart() {
 
     return (
         <MainLayout>
-            <StyledText fontFamily="JejuMyeongjo" fontSize="10px" letterSpacing="11.4px" marginBottom="32px">
+            <StyledText fontFamily="JejuMyeongjo" letterSpacing="11.4px" marginBottom="32px">
                 마음전하기
             </StyledText>
 
             <Line marginBottom="50px" />
 
-            <StyledText fontSize="10px" letterSpacing="1.6px" marginBottom="41px">
+            <StyledText fontSize="14px"  marginBottom="41px">
                 축하의 마음을 담아 축의금을 전달해보세요
             </StyledText>
 
             <AccountNumberSection>
-                <StyledText color="#3F96C4" marginRight="10px">
+                <StyledText fontSize="14px" color="#3F96C4" marginRight="10px">
                     신랑측
                 </StyledText>
                 <ShowAccountNumber onClick={() => openModal("신랑")}>계좌번호 보기</ShowAccountNumber>
             </AccountNumberSection>
 
             <AccountNumberSection>
-                <StyledText color="#F4B0B0" marginRight="10px">
+                <StyledText fontSize="14px" color="#F4B0B0" marginRight="10px">
                     신부측
                 </StyledText>
                 <ShowAccountNumber backgroundColor="#FFC3C3" onClick={() => openModal("신부")}>계좌번호 보기</ShowAccountNumber>
@@ -144,7 +144,7 @@ const MainLayout = styled.div`
 const StyledText = styled.span`
   color: ${({ color }) => color || '#755D5D'};
   font-family: ${({ fontFamily }) => fontFamily || 'GangwonEdu_OTFLightA'};
-  font-size: ${({ fontSize }) => fontSize || '11px'};
+  font-size: ${({ fontSize }) => fontSize || '16px'};
   font-style: normal;
   font-weight: ${({ fontWeight }) => fontWeight || '400'};
   margin-bottom: ${({ marginBottom }) => marginBottom || '0px'};
@@ -176,7 +176,7 @@ const ShowAccountNumber = styled.div`
   background: ${({ backgroundColor }) => backgroundColor || '#C3E0FF'};
   color: #fff;
   font-family: GangwonEdu_OTFLightA;
-  font-size: 11px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;

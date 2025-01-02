@@ -58,13 +58,13 @@ export default function Attendance() {
 
   return (
     <MainLayout>
-      <StyledText fontFamily="JejuMyeongjo" fontSize="10px" letterSpacing="11.4px" marginBottom="32px">참석의사전달</StyledText>
+      <StyledText fontFamily="JejuMyeongjo" letterSpacing="11.4px" marginBottom="32px">참석의사전달</StyledText>
 
       <Line marginBottom="69px" />
 
-      <StyledText fontSize="10px" color="#755D5D" marginBottom="8px">축하의 마음으로 참석해주시는</StyledText>
-      <StyledText fontSize="10px" color="#755D5D" marginBottom="8px">모든 분들을 귀하게 모실 수 있도록</StyledText>
-      <StyledText fontSize="10px" color="#755D5D" marginBottom="53px"> 참석 의사를 전달 부탁드립니다.</StyledText>
+      <StyledText fontSize="14px" color="#755D5D" marginBottom="8px">축하의 마음으로 참석해주시는</StyledText>
+      <StyledText fontSize="14px" color="#755D5D" marginBottom="8px">모든 분들을 귀하게 모실 수 있도록</StyledText>
+      <StyledText fontSize="14px" color="#755D5D" marginBottom="53px"> 참석 의사를 전달 부탁드립니다.</StyledText>
 
       <AttendanceButton onClick={() => openModal()}>
         <CheckIcon src={CHECK} />
@@ -87,7 +87,7 @@ const MainLayout = styled.div`
 const StyledText = styled.span`
   color: ${({ color }) => color || '#755D5D'};
   font-family: ${({ fontFamily }) => fontFamily || 'GangwonEdu_OTFLightA'};
-  font-size: ${({ fontSize }) => fontSize || '11px'};
+  font-size: ${({ fontSize }) => fontSize || '16px'};
   font-style: normal;
   font-weight: ${({ fontWeight }) => fontWeight || '400'};
   margin-bottom: ${({ marginBottom }) => marginBottom || '0px'};

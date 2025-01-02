@@ -62,13 +62,13 @@ export default function GuestBook() {
 
   return (
     <MainLayout>
-      <StyledText fontFamily="JejuMyeongjo" fontSize="10px" letterSpacing="11.4px" marginBottom="32px">
+      <StyledText fontFamily="JejuMyeongjo" fontSize="16px" letterSpacing="11.4px" marginBottom="32px">
         방명록
       </StyledText>
 
       <Line marginBottom="69px" />
 
-      <StyledText fontSize="8px" letterSpacing="9.12px" marginBottom="29px">
+      <StyledText fontSize="12px" letterSpacing="4px" marginBottom="29px">
         축하의 메세지를 남겨주세요
       </StyledText>
 
@@ -102,13 +102,13 @@ export default function GuestBook() {
         {guestBookEntries.map((entry) => (
           <Content key={entry.id}>
             <NameAndTime>
-              <StyledText fontSize="10px" fontWeight="bold" marginBottom="12px" marginRight="10px">{entry.name}</StyledText>
-              <StyledText fontSize="8px" marginBottom="8px">
+              <StyledText fontSize="14px" fontWeight="bold" marginBottom="12px" marginRight="10px">{entry.name}</StyledText>
+              <StyledText fontSize="10px" marginBottom="8px">
                 {format(new Date(entry.timestamp.seconds * 1000), 'yyyy-MM-dd HH:mm')}
               </StyledText>
             </NameAndTime>
 
-            <StyledText fontSize="8px">{entry.content}</StyledText>
+            <StyledText fontSize="10px">{entry.content}</StyledText>
           </Content>
         ))}
       </ContentSection>
@@ -164,7 +164,7 @@ border: 1px solid #ddd;
 background: #FFF;
 color: #755D5D;
 font-family: GangwonEdu_OTFLightA;
-font-size: 8px;
+font-size: 12px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;

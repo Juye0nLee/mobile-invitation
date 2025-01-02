@@ -19,7 +19,7 @@ export default function Date() {
 
     return (
         <MainLayout>
-            <StyledText fontSize="10px" letterSpacing="11.4px" marginBottom="32px" marginTop="92px">
+            <StyledText fontSize="16px" letterSpacing="11.4px" marginBottom="32px" marginTop="92px">
                 DATE
             </StyledText>
 
