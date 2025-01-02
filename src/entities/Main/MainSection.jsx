@@ -22,7 +22,7 @@ export default function MainSection() {
   return (
     <MainLayout>
       
-      <StyledText fontFamily="JejuMyeongjo" fontSize="16px" color="#B09D86" marginBottom="26px" marginTop="98px">
+      <StyledText fontFamily="JejuMyeongjo" fontSize="16px" color="#B09D86" marginBottom="26px">
         {daysLeft !== null ? `D-${daysLeft}` : 'Loading...'}
       </StyledText>
 
