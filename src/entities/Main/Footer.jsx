@@ -6,7 +6,8 @@ export default function Footer() {
   return (
     <MainLayout>
       <StyledIcon src={HEART_ICON} alt="heart-icon" />
-      <StyledText>행복으로 가득 찬 민주와 상민의 결혼생활을 진심으로 응원합니다.</StyledText>
+      <StyledText>가장 소중한 친구의 새로운 시작에 진심을 담아 선물합니다.</StyledText>
+      <StyledText> 두 사람의 앞날이 언제나 사랑과 행복으로 빛나길 바랍니다.</StyledText>
       <StyledSubText>Designer 장선아 | Developer 이주연</StyledSubText>
     </MainLayout>
   );
@@ -22,7 +23,6 @@ const MainLayout = styled.div`
   justify-content: center; // 수직 가운데 정렬
   box-sizing: border-box;
   padding: 20px; // 내부 여백
-  gap: 1rem; // 요소 간 간격
 `;
 
 const StyledIcon = styled.img`
@@ -34,10 +34,10 @@ const StyledIcon = styled.img`
 const StyledText = styled.span`
   color: #fff;
   font-family: 'JejuMyeongjo', serif;
-  font-size: 12px; // 메인 텍스트 크기
+  font-size: 10px; // 메인 텍스트 크기
   font-weight: bold; // 강조된 텍스트
   text-align: center; // 텍스트 가운데 정렬
-  margin-bottom: 0.5rem;
+  margin-bottom : 5px;
 `;
 
 const StyledSubText = styled.span`
@@ -46,4 +46,5 @@ const StyledSubText = styled.span`
   font-size: 12px; // 서브 텍스트 크기
   font-weight: 400;
   text-align: center;
+  margin-top : 10px;
 `;
