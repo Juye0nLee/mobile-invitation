@@ -35,7 +35,7 @@ export default function MusicPlay() {
         <source src={MUSIC} type="audio/mpeg" />
         브라우저가 오디오 태그를 지원하지 않습니다.
       </audio>
-      <MusicButton src={isPlaying ? MUSIC_OFF : MUSIC_ON} onClick={togglePlay} />
+      <MusicButton src={isPlaying ? MUSIC_ON : MUSIC_OFF} onClick={togglePlay} />
     </MainLayout>
   );
 }
