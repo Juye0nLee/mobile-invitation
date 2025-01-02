@@ -1,13 +1,23 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Modal from 'react-modal'
-import {db} from '../../firebase'
-import {doc,getDoc} from 'firebase/firestore'
+import { db } from '../../firebase'
+import { doc, getDocs, setDoc,collection } from 'firebase/firestore'
 import CHECK from '../../assets/check.svg'
 
 export default function Attendance() {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(null); // 선택 상태를 관리
+  const [selected, setSelected] = useState(null); 
+  const [name, setName] = useState('');
+  const [showPlaceholder, setShowPlaceholder] = useState(false);
+
+  const handleFocus = () => {
+    setShowPlaceholder(true); 
+  };
+
+  const handleBlur = () => {
+    setShowPlaceholder(false); 
+  };
 
   const openModal = () => {
     setIsOpen(true);
@@ -15,7 +25,33 @@ export default function Attendance() {
   const closeModal = () => setIsOpen(false);
 
   const handleSelect = (option) => {
-    setSelected(option); // '참석' 또는 '불참' 선택
+    setSelected(option); 
+  };
+  // Firestore에 데이터 추가하기
+  const addAttendance = async () => {
+    if (!name || !selected) {
+      alert('모든 필드를 입력해주세요.');
+      return;
+    }
+
+    try {
+      const querySnapshot = await getDocs(collection(db, 'Attendance'));
+      const docCount = querySnapshot.size;
+      const customId = `status${docCount + 1}`;
+      const docRef = doc(db, 'Attendance', customId);
+      await setDoc(docRef, {
+        name,
+        attendance: selected,
+        timestamp: new Date(), // 저장 시간 추가
+      });
+      console.log('Document written with ID: ', customId);
+      alert('참석여부가 저장되었습니다');
+      setSelected(null);
+      closeModal();
+    } catch (e) {
+      console.error('Error adding document: ', e);
+      alert('참석여부 저장 중 오류가 발생했습니다.');
+    }
   };
 
   const showModal = () => {
@@ -27,28 +63,35 @@ export default function Attendance() {
       >
         <CloseButton onClick={closeModal}>X</CloseButton>
         <ModalContent>
-          <StyledText fontSize="14px" marginBottom="20px" marginTop="18px" letterSpacing="11.4px">
+          <StyledText fontSize="16px" marginBottom="20px" marginTop="18px" letterSpacing="11.4px">
             참석 의사 전달
           </StyledText>
           <Line marginBottom="30px" />
-          <StyledText fontSize="11px" color="#574545" marginBottom="16px">참석여부</StyledText>
-          <StyledInput placeholder='이름을 입력해주세요'/>
+          <StyledText fontSize="14px" color="#574545" marginBottom="16px">참석여부</StyledText>
+          <StyledInput 
+            placeholder={showPlaceholder ? "" : '이름을 입력해주세요'}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            />
           <ButtonSection>
-            <SelectButton 
-              isSelected={selected === '참석'} 
+            <SelectButton
+              isSelected={selected === '참석'}
               onClick={() => handleSelect('참석')}
+              marginRight="16px"
             >
               참석
             </SelectButton>
-            <SelectButton 
-              isSelected={selected === '불참'} 
+            <SelectButton
+              isSelected={selected === '불참'}
               onClick={() => handleSelect('불참')}
             >
               불참
             </SelectButton>
           </ButtonSection>
 
-          <SendButton disabled={!selected} isDisabled={!selected}>
+          <SendButton disabled={!selected} isDisabled={!selected} onClick={addAttendance}>
             참석 의사 전달하기
           </SendButton>
         </ModalContent>
@@ -170,11 +213,11 @@ const SelectButton = styled.div`
   background: ${({ isSelected }) => (isSelected ? '#A09B86' : '#FFF')};
   color: ${({ isSelected }) => (isSelected ? '#FFF' : '#A09B86')};
   font-family: GangwonEdu_OTFLightA;
-  font-size: 8px;
+  font-size: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 16px;
+  margin-right: ${({ marginRight }) => marginRight || '0px'};
   cursor: pointer;
 `;
 
@@ -185,7 +228,7 @@ const SendButton = styled.div`
   background: ${({ isDisabled }) => (isDisabled ? '#CCC' : '#A09B86')};
   color: ${({ isDisabled }) => (isDisabled ? '#777' : '#FFF')};
   font-family: GangwonEdu_OTFLightA;
-  font-size: 11px;
+  font-size: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -193,20 +236,22 @@ const SendButton = styled.div`
 `;
 
 const StyledInput = styled.input`
-width: ${({ width }) => width || '120px'};
-height: ${({ height }) => height || '24px'};
+width: 140px;
+height: 32px;
 flex-shrink: 0;
+box-sizing : border-box;
+padding : 10px;
 border: 1px solid #ddd;
 background: #FFF;
 color: #755D5D;
 font-family: GangwonEdu_OTFLightA;
-font-size: 8px;
+font-size: 12px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 letter-spacing: 1.28px;
 margin-right: ${({ marginRight }) => marginRight || '0px'};
-margin-bottom: 10px;
+margin-bottom: 26px;
 &:focus {
   outline: none;
 }

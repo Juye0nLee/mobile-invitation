@@ -13,6 +13,7 @@ import SendHeart from '../entities/Main/SendHeart';
 import Attendance from '../entities/Main/Attendance';
 import GuestBook from '../entities/Main/GuestBook';
 import MusicPlay from '../entities/Main/MusicPlay';
+import Footer from '../entities/Main/Footer';
 
 export default function Main() {
   useEffect(() => {
@@ -51,6 +52,8 @@ export default function Main() {
           <Wrap data-aos="fade-up" data-aos-delay="1600">
             <GuestBook/>
           </Wrap>
+
+          {/* <Footer/> */}
         </C.PageSpace>
       </C.Center>
     </C.Page>
