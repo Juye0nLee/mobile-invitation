@@ -110,8 +110,8 @@ export default function SendHeart() {
 
             <Line marginBottom="50px" />
 
-            <StyledText fontSize="14px"  marginBottom="41px">
-                축하의 마음을 담아 축의금을 전달해보세요
+            <StyledText fontSize="14px" marginBottom="41px">
+                축하의 마음을 담아 축의금을 전달하실 수 있습니다.
             </StyledText>
 
             <AccountNumberSection>
