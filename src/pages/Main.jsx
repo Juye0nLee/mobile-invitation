@@ -53,7 +53,7 @@ export default function Main() {
             <GuestBook/>
           </Wrap>
 
-          {/* <Footer/> */}
+          <Footer/>
         </C.PageSpace>
       </C.Center>
     </C.Page>
