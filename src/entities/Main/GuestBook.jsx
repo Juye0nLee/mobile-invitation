@@ -43,7 +43,7 @@ export default function GuestBook() {
         content,
         timestamp: new Date(),
       });
-      alert('방명록이 성공적으로 저장되었습니다!');
+      alert('방명록이 저장되었습니다');
       setName('');
       setPassword('');
       setContent('');
