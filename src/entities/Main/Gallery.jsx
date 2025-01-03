@@ -59,11 +59,11 @@ export default function Gallery() {
         이미지를 클릭하시면 확대보기가 가능합니다.
       </StyledText>
 
-      {isMoreView === false && (
-        <WhiteGradientOverlay /> /* 버튼을 누르지 않았을 때만, 그라데이션 추가  */
-      )}
-
       <SliderContainer>
+
+        {isMoreView === false && (
+          <WhiteGradientOverlay /> /* 버튼을 누르지 않았을 때만, 그라데이션 추가  */
+        )}
         <Images isMoreView={isMoreView}>
           {images.slice(0, isMoreView ? images.length : 9).map((image, index) => (
             <Image
@@ -73,12 +73,12 @@ export default function Gallery() {
               onClick={() => openModal(image)}
             />
           ))}
-          {images.length > 9 && (
-            <PlusButton onClick={onClickImageMoreViewButton}>
-              {isMoreView ? "접기" : "더보기"}
-            </PlusButton>
-          )}
         </Images>
+        {images.length > 9 && (
+          <PlusButton onClick={onClickImageMoreViewButton}>
+            {isMoreView ? "접기" : "더보기"}
+          </PlusButton>
+        )}
       </SliderContainer>
 
       <StyledModal
@@ -120,24 +120,18 @@ const Line = styled.div`
   margin-bottom: ${({ marginBottom }) => marginBottom || "0px"};
 `;
 
-const SliderContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items : center;
-`;
-
 const Images = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items : center;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // 3열로 고정
+  gap: 10px; // 이미지 간격
+  width: 100%;
+  max-width: 360px; // 3열의 고정 너비
+  padding : 5px;
 `;
 
 const Image = styled.img`
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
   object-fit: cover;
   cursor: pointer;
   border-radius: 8px;
@@ -145,6 +139,14 @@ const Image = styled.img`
   &:hover {
     transform: scale(1.1);
   }
+`;
+
+const SliderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
 `;
 
 const StyledModal = styled(Modal)`
