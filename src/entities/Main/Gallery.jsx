@@ -34,9 +34,14 @@ const images = [
 
 ];
 
-export default function Gallery ()  {
+export default function Gallery() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [isMoreView, setIsMoreView] = useState(false); // 더보기/접기 상태
+
+  const onClickImageMoreViewButton = () => {
+    setIsMoreView(!isMoreView); // 상태 반전
+  };
 
   const openModal = (index) => {
     setSelectedImageIndex(index);
@@ -71,8 +76,11 @@ export default function Gallery ()  {
       </StyledText>
 
       <SliderContainer>
-        <Images>
-          {images.map((image, index) => (
+        {isMoreView === false && (
+          <WhiteGradientOverlay /> /* 버튼을 누르지 않았을 때만, 그라데이션 추가  */
+        )}
+        <Images isMoreView={isMoreView}>
+          {images.slice(0, isMoreView ? images.length : 9).map((image, index) => (
             <Image
               key={index}
               src={image}
@@ -81,6 +89,11 @@ export default function Gallery ()  {
             />
           ))}
         </Images>
+        {images.length > 9 && (
+          <PlusButton onClick={onClickImageMoreViewButton}>
+            {isMoreView ? "접기" : "더보기"}
+          </PlusButton>
+        )}
       </SliderContainer>
 
       <StyledModal
@@ -90,10 +103,10 @@ export default function Gallery ()  {
         ariaHideApp={false}
       >
         <ModalContent>
-          <CloseButton src={CLOSE} onClick={()=>setIsOpen(false)}/>
+          <CloseButton src={CLOSE} onClick={() => setIsOpen(false)} />
           <ModalImage src={images[selectedImageIndex]} alt="Selected" />
-          <PrevButton src={PREV} onClick={handlePrev}/>
-          <NextButton src={NEXT}onClick={handleNext}/>
+          <PrevButton src={PREV} onClick={handlePrev} />
+          <NextButton src={NEXT} onClick={handleNext} />
         </ModalContent>
       </StyledModal>
     </MainLayout>
@@ -214,7 +227,7 @@ const ModalImage = styled.img`
 const PrevButton = styled.img`
   position: absolute;
   top: 50%;
-  left: -20px;
+  left: 10px;
   transform: translateY(-50%);
   width : 20px;
   height : 20px;
@@ -223,7 +236,7 @@ const PrevButton = styled.img`
 const NextButton = styled.img`
   position: absolute;
   top: 50%;
-  right: -20px;
+  right: 10px;
   transform: translateY(-50%);
   width : 20px;
   height : 20px;
