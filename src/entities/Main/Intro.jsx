@@ -59,7 +59,7 @@ export default function Intro() {
             </Elements>
 
             <InfoText marginTop="10%"> 2025년 2월 15일 토요일 오후 12시 30분 </InfoText>
-            <InfoText> 더 빅토리아웨딩파티 하늘정원홈 9F Ciel Garden Hall </InfoText>
+            <InfoText> 더 빅토리아웨딩파티 하늘정원홀 9F Ciel Garden Hall </InfoText>
 
         </SVGContainer>
     );
