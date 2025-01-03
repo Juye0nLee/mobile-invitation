@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef,useEffect } from "react";
 import styled from "styled-components";
 import Modal from 'react-modal'
 const images = [
@@ -35,7 +35,7 @@ export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState();
   const [currentImage, setCurrentImage] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-
+  const thumbnailRefs = useRef([]); // 썸네일 DOM 참조 배열
 
   const handleThumbnailClick = (index) => {
     setCurrentImage(index);
@@ -51,37 +51,40 @@ export default function Gallery() {
 
   const openModal = (image) => {
     setIsOpen(true);
-    setSelectedImage(image)
+    setSelectedImage(image);
   };
 
   const closeModal = () => setIsOpen(false);
 
-  const showModal = () => {
-    return (
-      <StyledModal
-        isOpen={isOpen}
-        onRequestClose={closeModal}
-        shouldCloseOnOverlayClick={false}
-      >
-        <CloseButton onClick={closeModal}>X</CloseButton>
-        <ModalContent>
-          <img src={selectedImage}/>
-        </ModalContent>
-      </StyledModal>
-    );
-  }
+  // 현재 이미지에 맞춰 썸네일 스크롤 조정
+  useEffect(() => {
+    const currentThumbnail = thumbnailRefs.current[currentImage];
+    if (currentThumbnail) {
+      currentThumbnail.scrollIntoView({
+        behavior: "smooth", // 부드럽게 스크롤
+        block: "nearest",  // 가장 가까운 위치로 스크롤
+        inline: "center",  // 썸네일 가운데로 스크롤
+      });
+    }
+  }, [currentImage]);
+
+  const showModal = () => (
+    <StyledModal
+      isOpen={isOpen}
+      onRequestClose={closeModal}
+      shouldCloseOnOverlayClick={false}
+    >
+      <CloseButton onClick={closeModal}>X</CloseButton>
+      <ModalContent>
+        <img src={selectedImage} alt="Modal View" />
+      </ModalContent>
+    </StyledModal>
+  );
 
   return (
     <MainLayout>
-      <StyledText fontFamily="JejuMyeongjo" fontSize="16px" letterSpacing="11.4px" marginBottom="32px">
-        GALLERY
-      </StyledText>
-
-      <Line marginBottom="32px" />
-
-      <StyledText color="#755D5D" fontSize="12px" marginBottom="32px">
-        이미지를 클릭하시면 확대보기가 가능합니다.
-      </StyledText>
+      <StyledText>GALLERY</StyledText>
+      <Line />
 
       <SliderContainer>
         <Images>
@@ -91,7 +94,7 @@ export default function Gallery() {
               src={image}
               alt={`Slide ${index}`}
               isActive={index === currentImage}
-              onClick={()=>openModal(image)}
+              onClick={() => openModal(image)}
             />
           ))}
         </Images>
@@ -108,6 +111,7 @@ export default function Gallery() {
               src={image}
               alt={`Thumbnail ${index}`}
               isActive={index === currentImage}
+              ref={(el) => (thumbnailRefs.current[index] = el)} // DOM 참조 저장
               onClick={() => handleThumbnailClick(index)}
             />
           ))}
@@ -119,7 +123,6 @@ export default function Gallery() {
   );
 }
 
-// Styled Components
 const MainLayout = styled.div`
   display: flex;
   flex-direction: column;
@@ -227,8 +230,6 @@ const Thumbnails = styled.div`
 `;
 
 const Thumbnail = styled.img`
-  width: auto;
-  height: auto;
   cursor: pointer;
   border: 2px solid ${(props) => (props.isActive ? "#fff" : "transparent")};
   transition: border 300ms ease-in-out;
