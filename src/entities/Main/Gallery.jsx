@@ -199,19 +199,35 @@ const Button = styled.div`
     right: 0;
   }
 `;
-
 const Thumbnails = styled.div`
   position: absolute;
   bottom: 5px;
   width: 100%;
-  height: 40px;
+  height: 60px; // 높이를 늘려 스크롤바가 이미지와 겹치지 않도록 설정
   display: flex;
-  justify-content: center;
   gap: 5px;
+  overflow-x: auto; // 가로 스크롤 활성화
+  overflow-y: hidden; // 세로 스크롤 비활성화
+  padding: 0 10px; // 스크롤 바와 썸네일 간격 추가
+  scrollbar-width: thin; // 스크롤바 크기 조정 (Firefox)
+  scrollbar-color: #ccc transparent; // 스크롤바 색상 설정 (Firefox)
+
+  &::-webkit-scrollbar {
+    height: 8px; // 스크롤바 높이
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ccc; // 스크롤바 색상
+    border-radius: 10px; // 스크롤바 모서리 둥글게
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent; // 트랙 배경색 투명
+  }
 `;
 
 const Thumbnail = styled.img`
-  width: 60px;
+  width: auto;
   height: auto;
   cursor: pointer;
   border: 2px solid ${(props) => (props.isActive ? "#fff" : "transparent")};
