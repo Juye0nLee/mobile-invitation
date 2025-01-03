@@ -1,4 +1,4 @@
-import React, { useState,useRef,useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Modal from 'react-modal'
 const images = [
@@ -32,93 +32,66 @@ const images = [
 ];
 
 export default function Gallery() {
-  const [selectedImage, setSelectedImage] = useState();
-  const [currentImage, setCurrentImage] = useState(0);
+  const [selectedImage, setSelectedImage] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const thumbnailRefs = useRef([]); // 썸네일 DOM 참조 배열
+  const [isMoreView, setIsMoreView] = useState(false); // 더보기/접기 상태
 
-  const handleThumbnailClick = (index) => {
-    setCurrentImage(index);
-  };
-
-  const handleNext = () => {
-    setCurrentImage((prev) => (prev + 1) % images.length);
-  };
-
-  const handleBack = () => {
-    setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
+  const onClickImageMoreViewButton = () => {
+    setIsMoreView(!isMoreView); // 상태 반전
   };
 
   const openModal = (image) => {
-    setIsOpen(true);
     setSelectedImage(image);
+    setIsOpen(true);
   };
 
-  const closeModal = () => setIsOpen(false);
-
-  // 현재 이미지에 맞춰 썸네일 스크롤 조정
-  useEffect(() => {
-    const currentThumbnail = thumbnailRefs.current[currentImage];
-    if (currentThumbnail) {
-      currentThumbnail.scrollIntoView({
-        behavior: "smooth", // 부드럽게 스크롤
-        block: "nearest",  // 가장 가까운 위치로 스크롤
-        inline: "center",  // 썸네일 가운데로 스크롤
-      });
-    }
-  }, [currentImage]);
-
-  const showModal = () => (
-    <StyledModal
-      isOpen={isOpen}
-      onRequestClose={closeModal}
-      shouldCloseOnOverlayClick={false}
-    >
-      <CloseButton onClick={closeModal}>X</CloseButton>
-      <ModalContent>
-        <img src={selectedImage} alt="Modal View" />
-      </ModalContent>
-    </StyledModal>
-  );
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   return (
     <MainLayout>
-      <StyledText>GALLERY</StyledText>
-      <Line />
+      <StyledText fontFamily="JejuMyeongjo" fontSize="16px" letterSpacing="11.4px" marginBottom="32px">
+        GALLERY
+      </StyledText>
+      <Line marginBottom="32px" />
+      <StyledText color="#755D5D" fontSize="12px" marginBottom="32px">
+        이미지를 클릭하시면 확대보기가 가능합니다.
+      </StyledText>
+
+      {isMoreView === false && (
+        <WhiteGradientOverlay /> /* 버튼을 누르지 않았을 때만, 그라데이션 추가  */
+      )}
 
       <SliderContainer>
-        <Images>
-          {images.map((image, index) => (
+        <Images isMoreView={isMoreView}>
+          {images.slice(0, isMoreView ? images.length : 9).map((image, index) => (
             <Image
               key={index}
               src={image}
               alt={`Slide ${index}`}
-              isActive={index === currentImage}
               onClick={() => openModal(image)}
             />
           ))}
+          {images.length > 9 && (
+            <PlusButton onClick={onClickImageMoreViewButton}>
+              {isMoreView ? "접기" : "더보기"}
+            </PlusButton>
+          )}
         </Images>
-        <Button className="back-btn" onClick={handleBack}>
-          <ion-icon name="chevron-back-outline"></ion-icon>
-        </Button>
-        <Button className="next-btn" onClick={handleNext}>
-          <ion-icon name="chevron-forward-outline"></ion-icon>
-        </Button>
-        <Thumbnails>
-          {images.map((image, index) => (
-            <Thumbnail
-              key={index}
-              src={image}
-              alt={`Thumbnail ${index}`}
-              isActive={index === currentImage}
-              ref={(el) => (thumbnailRefs.current[index] = el)} // DOM 참조 저장
-              onClick={() => handleThumbnailClick(index)}
-            />
-          ))}
-        </Thumbnails>
       </SliderContainer>
 
-      {showModal()}
+      <StyledModal
+        isOpen={isOpen}
+        onRequestClose={closeModal}
+        shouldCloseOnOverlayClick={true}
+        ariaHideApp={false}
+      >
+        <ModalContent>
+          <CloseButton onClick={closeModal}>X</CloseButton>
+          <img src={selectedImage} alt="Selected" style={{ maxWidth: "100%", maxHeight: "90vh" }} />
+        </ModalContent>
+      </StyledModal>
     </MainLayout>
   );
 }
@@ -137,7 +110,6 @@ const StyledText = styled.div`
   font-style: normal;
   font-weight: ${({ fontWeight }) => fontWeight || "400"};
   margin-bottom: ${({ marginBottom }) => marginBottom || "0px"};
-  margin-top: ${({ marginTop }) => marginTop || "0px"};
   letter-spacing: ${({ letterSpacing }) => letterSpacing || "0px"};
 `;
 
@@ -149,118 +121,50 @@ const Line = styled.div`
 `;
 
 const SliderContainer = styled.div`
-  position: relative;
-  width: 80%;
-  height: 420px;
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 5px;
-  box-shadow: 0px 50px 100px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items : center;
 `;
 
 const Images = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items : center;
+  gap: 10px;
 `;
 
 const Image = styled.img`
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
-  opacity: ${(props) => (props.isActive ? 1 : 0)};
-  transform: ${(props) => (props.isActive ? "scale(1)" : "scale(1.1)")};
-  transition: all 500ms ease-in-out;
-`;
-
-const Button = styled.div`
-  position: absolute;
-  top: 0;
-  width: 40px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
-  color: #fff;
-  font-size: 25px;
-  background: rgba(0, 0, 0, 0.2);
-  transition: background 300ms ease-in-out;
-
+  border-radius: 8px;
+  transition: transform 0.3s;
   &:hover {
-    background: rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
   }
-
-  &.back-btn {
-    left: 0;
-  }
-
-  &.next-btn {
-    right: 0;
-  }
-`;
-const Thumbnails = styled.div`
-  position: absolute;
-  bottom: 5px;
-  width: 100%;
-  height: 60px; // 높이를 늘려 스크롤바가 이미지와 겹치지 않도록 설정
-  display: flex;
-  gap: 5px;
-  overflow-x: auto; // 가로 스크롤 활성화
-  overflow-y: hidden; // 세로 스크롤 비활성화
-  padding: 0 10px; // 스크롤 바와 썸네일 간격 추가
-  scrollbar-width: thin; // 스크롤바 크기 조정 (Firefox)
-  scrollbar-color: #ccc transparent; // 스크롤바 색상 설정 (Firefox)
-
-  &::-webkit-scrollbar {
-    height: 8px; // 스크롤바 높이
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #ccc; // 스크롤바 색상
-    border-radius: 10px; // 스크롤바 모서리 둥글게
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent; // 트랙 배경색 투명
-  }
-`;
-
-const Thumbnail = styled.img`
-  cursor: pointer;
-  border: 2px solid ${(props) => (props.isActive ? "#fff" : "transparent")};
-  transition: border 300ms ease-in-out;
 `;
 
 const StyledModal = styled(Modal)`
-  width: 362px;
-  height: 338px;
-  padding: 0;
-  border: none;
-  background: #fff;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  position: relative;
-  margin: auto;
-  border-radius: 8px;
-  @media (max-width: 480px) {
-    width: 90%;
-    height: auto;
-    padding: 20px;
-  }
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
 `;
 
 const ModalContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
+  background: none;
+  // padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
 `;
-
 
 const CloseButton = styled.button`
   position: absolute;
@@ -268,7 +172,31 @@ const CloseButton = styled.button`
   right: 10px;
   background: none;
   border: none;
-  font-size: 16px;
+  font-size: 24px;
   cursor: pointer;
+  color: #fff;
 `;
 
+const PlusButton = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 10px 0;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 10px;
+  z-index : 100;
+  font-family: GangwonEdu_OTFLightA;
+font-size: 16px;
+color: #755D5D;
+`;
+
+const WhiteGradientOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(253, 252, 245, 0) 0%, /* 그라데이션 설정 */
+      rgb(253, 252, 245) 100%);
+`;
