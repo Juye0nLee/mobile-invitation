@@ -22,7 +22,7 @@ export default function MainSection() {
   return (
     <MainLayout>
       
-      <StyledText fontFamily="JejuMyeongjo" fontSize="24px" color="#B09D86" marginBottom="26px">
+      <StyledText fontFamily="GangwonEdu_OTFLightA" fontSize="24px" color="#B09D86" marginBottom="26px">
         {daysLeft !== null ? `D-${daysLeft}` : 'Loading...'}
       </StyledText>
 
@@ -30,7 +30,7 @@ export default function MainSection() {
       
       <MainImage src={MAIN_IMAGE} />
 
-      <StyledText fontFamily="JejuMyeongjo" marginBottom="32px" marginTop="50px">
+      <StyledText marginBottom="32px" marginTop="50px">
         이상민 ∙ 김민주
       </StyledText>
 

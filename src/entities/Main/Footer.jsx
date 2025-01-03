@@ -33,7 +33,7 @@ const StyledIcon = styled.img`
 
 const StyledText = styled.span`
   color: #fff;
-  font-family: 'JejuMyeongjo', serif;
+  font-family: 'GangwonEdu_OTFLightA', serif;
   font-size: 10px; // 메인 텍스트 크기
   font-weight: bold; // 강조된 텍스트
   text-align: center; // 텍스트 가운데 정렬

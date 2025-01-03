@@ -220,7 +220,7 @@ const SendButton = styled.div`
   background: ${({ isDisabled }) => (isDisabled ? '#CCC' : '#A09B86')};
   color: ${({ isDisabled }) => (isDisabled ? '#777' : '#FFF')};
   font-family: GangwonEdu_OTFLightA;
-  font-size: 11px;
+  font-size: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
