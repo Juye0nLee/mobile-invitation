@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Modal from 'react-modal'
+import NEXT from '../../assets/next.svg'
+import PREV from '../../assets/prev.svg'
+import CLOSE from '../../assets/closebutton.svg'
 const images = [
   "https://jy-study-bucket.s3.ap-northeast-2.amazonaws.com/%E1%84%86%E1%85%A9%E1%84%8E%E1%85%A5%E1%86%BC/SJK_0568%E1%84%87%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%BC.jpg",
   "https://jy-study-bucket.s3.ap-northeast-2.amazonaws.com/%E1%84%86%E1%85%A9%E1%84%8E%E1%85%A5%E1%86%BC/SJK_0577%E1%84%87%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%BC.jpg",
@@ -31,22 +34,30 @@ const images = [
 
 ];
 
-export default function Gallery() {
-  const [selectedImage, setSelectedImage] = useState(null);
+export default function Gallery ()  {
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [isMoreView, setIsMoreView] = useState(false); // 더보기/접기 상태
 
-  const onClickImageMoreViewButton = () => {
-    setIsMoreView(!isMoreView); // 상태 반전
-  };
-
-  const openModal = (image) => {
-    setSelectedImage(image);
+  const openModal = (index) => {
+    setSelectedImageIndex(index);
     setIsOpen(true);
   };
 
   const closeModal = () => {
     setIsOpen(false);
+    setSelectedImageIndex(null);
+  };
+
+  const handleNext = () => {
+    setSelectedImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setSelectedImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
   };
 
   return (
@@ -60,25 +71,16 @@ export default function Gallery() {
       </StyledText>
 
       <SliderContainer>
-
-        {isMoreView === false && (
-          <WhiteGradientOverlay /> /* 버튼을 누르지 않았을 때만, 그라데이션 추가  */
-        )}
-        <Images isMoreView={isMoreView}>
-          {images.slice(0, isMoreView ? images.length : 9).map((image, index) => (
+        <Images>
+          {images.map((image, index) => (
             <Image
               key={index}
               src={image}
               alt={`Slide ${index}`}
-              onClick={() => openModal(image)}
+              onClick={() => openModal(index)}
             />
           ))}
         </Images>
-        {images.length > 9 && (
-          <PlusButton onClick={onClickImageMoreViewButton}>
-            {isMoreView ? "접기" : "더보기"}
-          </PlusButton>
-        )}
       </SliderContainer>
 
       <StyledModal
@@ -88,13 +90,15 @@ export default function Gallery() {
         ariaHideApp={false}
       >
         <ModalContent>
-          <CloseButton onClick={closeModal}>X</CloseButton>
-          <img src={selectedImage} alt="Selected" style={{ maxWidth: "100%", maxHeight: "90vh" }} />
+          <CloseButton src={CLOSE} onClick={()=>setIsOpen(false)}/>
+          <ModalImage src={images[selectedImageIndex]} alt="Selected" />
+          <PrevButton src={PREV} onClick={handlePrev}/>
+          <NextButton src={NEXT}onClick={handleNext}/>
         </ModalContent>
       </StyledModal>
     </MainLayout>
   );
-}
+};
 
 const MainLayout = styled.div`
   display: flex;
@@ -168,15 +172,14 @@ const ModalContent = styled.div`
   text-align: center;
 `;
 
-const CloseButton = styled.button`
+const CloseButton = styled.img`
   position: absolute;
   top: 10px;
   right: 10px;
-  background: none;
-  border: none;
-  font-size: 24px;
+  width : 20px;
+  height : 20px;
   cursor: pointer;
-  color: #fff;
+
 `;
 
 const PlusButton = styled.div`
@@ -201,4 +204,27 @@ const WhiteGradientOverlay = styled.div`
   height: 100%;
   background: linear-gradient(rgba(253, 252, 245, 0) 0%, /* 그라데이션 설정 */
       rgb(253, 252, 245) 100%);
+`;
+const ModalImage = styled.img`
+  max-width: 90%;
+  max-height: 80vh;
+  object-fit: contain;
+`;
+
+const PrevButton = styled.img`
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  transform: translateY(-50%);
+  width : 20px;
+  height : 20px;
+`;
+
+const NextButton = styled.img`
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  transform: translateY(-50%);
+  width : 20px;
+  height : 20px;
 `;

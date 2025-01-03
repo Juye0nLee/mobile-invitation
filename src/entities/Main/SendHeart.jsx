@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
+import CLOSE from '../../assets/closebutton2.svg'
 
 export default function SendHeart() {
     const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +29,7 @@ export default function SendHeart() {
                         onRequestClose={closeModal}
                         shouldCloseOnOverlayClick={true}
                     >
-                        <CloseButton onClick={closeModal}>X</CloseButton>
+                        <CloseButton src={CLOSE} onClick={() => setIsOpen(false)} />
                         <ModalContent>
                             <StyledText fontSize="14px" marginBottom="20px" marginTop="18px" letterSpacing="11.4px">
                                 신랑측 계좌번호
@@ -66,7 +67,7 @@ export default function SendHeart() {
                         onRequestClose={closeModal}
                         shouldCloseOnOverlayClick={true}
                     >
-                        <CloseButton onClick={closeModal}>X</CloseButton>
+                        <CloseButton src={CLOSE} onClick={() => setIsOpen(false)} />
                         <ModalContent>
                             <StyledText fontSize="14px" marginBottom="20px" marginTop="18px" letterSpacing="11.4px">
                                 신부측 계좌번호
@@ -185,14 +186,13 @@ const ShowAccountNumber = styled.div`
   align-items: center;
 `;
 
-const CloseButton = styled.button`
+const CloseButton = styled.img`
   position: absolute;
   top: 10px;
   right: 10px;
-  background: none;
-  border: none;
-  font-size: 16px;
   cursor: pointer;
+  width : 20px;
+  height : 20px;
 `;
 const StyledModal = styled(Modal)`
   width: 362px;

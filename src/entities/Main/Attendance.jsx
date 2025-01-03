@@ -2,21 +2,23 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Modal from 'react-modal'
 import { db } from '../../firebase'
-import { doc, getDocs, setDoc,collection } from 'firebase/firestore'
+import { doc, getDocs, setDoc, collection } from 'firebase/firestore'
 import CHECK from '../../assets/check.svg'
+import CLOSE from '../../assets/closebutton2.svg'
+
 
 export default function Attendance() {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(null); 
+  const [selected, setSelected] = useState(null);
   const [name, setName] = useState('');
   const [showPlaceholder, setShowPlaceholder] = useState(false);
 
   const handleFocus = () => {
-    setShowPlaceholder(true); 
+    setShowPlaceholder(true);
   };
 
   const handleBlur = () => {
-    setShowPlaceholder(false); 
+    setShowPlaceholder(false);
   };
 
   const openModal = () => {
@@ -25,7 +27,7 @@ export default function Attendance() {
   const closeModal = () => setIsOpen(false);
 
   const handleSelect = (option) => {
-    setSelected(option); 
+    setSelected(option);
   };
   // Firestore에 데이터 추가하기
   const addAttendance = async () => {
@@ -61,20 +63,20 @@ export default function Attendance() {
         onRequestClose={closeModal}
         shouldCloseOnOverlayClick={false}
       >
-        <CloseButton onClick={closeModal}>X</CloseButton>
+        <CloseButton src={CLOSE} onClick={() => setIsOpen(false)} />
         <ModalContent>
           <StyledText fontSize="16px" marginBottom="20px" marginTop="18px" letterSpacing="11.4px">
             참석 의사 전달
           </StyledText>
           <Line marginBottom="30px" />
           <StyledText fontSize="14px" color="#574545" marginBottom="16px">참석여부</StyledText>
-          <StyledInput 
+          <StyledInput
             placeholder={showPlaceholder ? "" : '이름을 입력해주세요'}
             value={name}
             onChange={(e) => setName(e.target.value)}
             onFocus={handleFocus}
             onBlur={handleBlur}
-            />
+          />
           <ButtonSection>
             <SelectButton
               isSelected={selected === '참석'}
@@ -164,14 +166,13 @@ const CheckIcon = styled.img`
   margin-right: 18px;
 `;
 
-const CloseButton = styled.button`
+const CloseButton = styled.img`
   position: absolute;
   top: 10px;
   right: 10px;
-  background: none;
-  border: none;
-  font-size: 16px;
   cursor: pointer;
+  width: 20px;
+  height: 20px;
 `;
 
 const StyledModal = styled(Modal)`
